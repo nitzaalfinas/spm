@@ -1,0 +1,323 @@
+<div data-options="region:'north'" style="height:50px;">
+	<h1>DMS</h1>
+</div>
+<div data-options="region:'west',title:'Navigasi',split:true" style="width:200px;" id="west">
+	<div id="aa" class="easyui-accordion">
+        <div title="Bookmark" style="overflow:auto;padding:10px;">
+            
+        </div>
+        <div title="Admin" data-options="selected:true" style="padding:10px;">
+            <ul class="easyui-tree">
+			    <li>
+                    <span>
+                        <a href="#" onclick="xcore.addTab('Provinsi','/adm/provinsis');">Provinsi</a>
+                    </span>
+			    </li>
+			    <li>
+			    	<span>
+			    		<a href="#" onclick="xcore.addTab('Kabupaten/Kota','/adm/kabkots');">Kabupaten/Kota</a>
+		    		</span>
+		    	</li>
+			    <li>
+			    	<span>
+			    		<a href="#" onclick="xcore.addTab('Bidang','/adm/bidangs');">Bidang</a>
+		    		</span>
+		    	</li>
+		    	<li>
+			    	<span>
+			    		<a href="#" onclick="xcore.addTab('Jenis Pelayanan','/adm/jenis_pelayanans');">Jenis Pelayanan</a>
+		    		</span>
+		    	</li>
+                <li>
+                    <span>
+                        <a href="#" onclick="xcore.addTab('Indikator','/adm/indikators');">Indikator</a>
+                    </span>
+                </li>
+			</ul>
+        </div>
+    </div>
+</div>
+<div data-options="region:'center'" style="background:#eee;">
+	<div id="main_tab" class="easyui-tabs" data-options="fit:true,border:false"></div>
+</div>
+
+<div id="theForm"></div>
+
+
+<script type="text/javascript">
+var xcore = {
+	addTab: function(title,url,id) {
+        if ($('#main_tab').tabs('exists', title)) {
+            $('#main_tab').tabs('select', title);
+        } else {
+            var content = 'added tab';
+            $('#main_tab').tabs('add', {
+                id: id,
+                title: title,
+                content: content,
+                closable: true,
+                href: url
+            });
+        }
+    }
+};
+
+
+var admProvinsi = {
+    actions: function(value,row,index) {
+        var e = '<a href="#" title="Edit" onclick="admProvinsi.createWindow('+row.id+');"><i class="fa fa-pencil-square-o"></i></a>';
+        var f = '<a href="#" title="Hapus" onclick="admProvinsi.hapus('+row.id+');">Hapus</a>';
+        
+        return e+' '+f;
+    },
+    createWindow: function(id) {
+        $('#theForm').window({
+            width:360,
+            height:160,
+            modal:true,
+            title: 'Formulir Provinsi'
+        });
+        $('#theForm').window('refresh','/adm/provinsis/form/'+id);
+    },
+    formSave: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = "/adm/provinsis/form/save";
+        
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_provinsi_grid').datagrid('reload');
+            }
+        });
+    },
+    hapus: function(id) {
+        var pilihan = confirm("Apakah benar ingin menghapus data ini?");
+        if(pilihan == true) {
+            $.ajax({
+                url: '/adm/provinsis/hapus/'+id,
+                type: 'POST',
+                success: function(response) {
+                    $('#adm_provinsi_grid').datagrid('reload');
+                }
+            });  
+        }
+        else {
+            //do nothing
+        }
+    }
+};
+
+var admKabkot = {
+    actions: function(value,row,index) {
+        var e = '<a href="#" title="Edit" onclick="admKabkot.createWindow('+row.id+');"><i class="fa fa-pencil-square-o"></i></a>';
+        var f = '<a href="#" title="Hapus" onclick="admKabkot.hapus('+row.id+');">Hapus</a>';
+        
+        return e+' '+f;
+    },
+    createWindow: function(id) {
+        $('#theForm').window({
+            width:360,
+            height:230,
+            modal:true,
+            title: 'Formulir Kabupaten/Kota'
+        });
+        $('#theForm').window('refresh','/adm/kabkots/form/'+id);
+    },
+    formSave: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = "/adm/kabkots/form/save";
+        
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_kabkot_grid').datagrid('reload');
+            }
+        });
+    },
+    hapus: function(id) {
+        var pilihan = confirm("Apakah benar ingin menghapus data ini?");
+        if(pilihan == true) {
+            $.ajax({
+                url: '/adm/kabkots/hapus/'+id,
+                type: 'POST',
+                success: function(response) {
+                    $('#adm_kabkot_grid').datagrid('reload');
+                }
+            });  
+        }
+        else {
+            //do nothing
+        }
+    }
+};
+
+
+var admBidang = {
+	actions: function(value,row,index) {
+        var e = '<a href="#" title="Edit" onclick="admBidang.createWindow('+row.id+');"><i class="fa fa-pencil-square-o"></i></a>';
+        var f = '<a href="#" title="Hapus" onclick="admBidang.hapus('+row.id+');">Hapus</a>';
+        
+        return e+' '+f;
+    },
+    createWindow: function(id) {
+        $('#theForm').window({
+            width:360,
+            height:160,
+            modal:true,
+            title: 'Formulir Bidang'
+        });
+        $('#theForm').window('refresh','/adm/bidangs/form/'+id);
+    },
+    formSave: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = "";
+        if(id == 0) { theUrl = '/adm/bidangs/form/create'; }
+        else { theUrl = '/adm/bidangs/form/update'; }
+
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_bidang_grid').datagrid('reload');
+            }
+        });
+    },
+    hapus: function(id) {
+        var pilihan = confirm("Apakah benar ingin menghapus data ini?");
+        if(pilihan == true) {
+            $.ajax({
+                url: '/adm/bidangs/hapus/'+id,
+                type: 'POST',
+                success: function(response) {
+                    $('#adm_bidang_grid').datagrid('reload');
+                }
+            });  
+        }
+        else {
+            //do nothing
+        }
+    }
+};
+
+var admJenisPelayanan = {
+	actions: function(value,row,index) {
+        var e = '<a href="#" title="Edit" onclick="admJenisPelayanan.createWindow('+row.id+');"><i class="fa fa-pencil-square-o"></i></a>';
+        var f = '<a href="#" title="Hapus" onclick="admJenisPelayanan.hapus('+row.id+');">Hapus</a>';
+        
+        return e+' '+f;
+    },
+    createWindow: function(id) {
+        $('#theForm').window({
+            width:360,
+            height:190,
+            modal:true,
+            title: 'Formulir Jenis Pelayanan'
+        });
+        $('#theForm').window('refresh','/adm/jenis_pelayanans/form/'+id);
+    },
+    formSave: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = "";
+        if(id == 0) { theUrl = '/adm/jenis_pelayanans/form/create'; }
+        else { theUrl = '/adm/jenis_pelayanans/form/update'; }
+
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_jenis_pelayanan_grid').datagrid('reload');
+            }
+        });
+    },
+    hapus: function(id) {
+        var pilihan = confirm("Apakah benar ingin menghapus data ini?");
+        if(pilihan == true) {
+            $.ajax({
+                url: '/adm/jenis_pelayanans/hapus/'+id,
+                type: 'POST',
+                success: function(response) {
+                    $('#adm_jenis_pelayanan_grid').datagrid('reload');
+                }
+            });
+        }
+        else {
+            //do nothing
+        }
+    }
+};
+
+
+var admIndikator = {
+    actions: function(value,row,index) {
+        var e = '<a href="#" title="Edit" onclick="admIndikator.createWindow('+row.id+');"><i class="fa fa-pencil-square-o"></i></a>';
+        var f = '<a href="#" title="Hapus" onclick="admIndikator.hapus('+row.id+');">Hapus</a>';
+        
+        return e+' '+f;
+    },
+    createWindow: function(id) {
+        $('#theForm').window({
+            width:360,
+            height:230,
+            modal:true,
+            title: 'Formulir Indikator'
+        });
+        $('#theForm').window('refresh','/adm/indikators/form/'+id);
+    },
+    formSave: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = "";
+        if(id == 0) { theUrl = '/adm/indikators/form/create'; }
+        else { theUrl = '/adm/indikators/form/update'; }
+
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_indikator_grid').datagrid('reload');
+            }
+        });
+    },
+    hapus: function(id) {
+        var pilihan = confirm("Apakah benar ingin menghapus data ini?");
+        if(pilihan == true) {
+            $.ajax({
+                url: '/adm/indikators/hapus/'+id,
+                type: 'POST',
+                success: function(response) {
+                    $('#adm_indikator_grid').datagrid('reload');
+                }
+            });  
+        }
+        else {
+            //do nothing
+        }
+    },
+    optJenisPelayanan: function() {
+        var bidang_id = $('#indikator_form [name=bidang_id]').val();
+        $.ajax({
+            url: '/adm/indikators/opt_jenis_pelayanan?bidang_id='+bidang_id,
+            success: function(response) {
+                $('#indikator_form [name=jenis_pelayanan_id').html(response);
+            }
+        });
+    }
+};
+
+</script>

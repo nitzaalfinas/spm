@@ -1,0 +1,46 @@
+<form class="pt10 pr10 pb10 pl10" id="kabkot_form">
+	<table>
+		<tr>
+			<td>
+				ID Provinsi
+			</td>
+			<td>
+				<input type="text" name="provinsi_id" value="<%= @kabkot.provinsi_id %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Nama Provinsi
+			</td>
+			<td>
+				<input type="text" name="provinsi_nama" value="<%= @kabkot.provinsi_nama %>" disabled readonly />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				ID Kabupaten/Kota
+			</td>
+			<td>
+				<input type="text" name="id" value="<%= @kabkot.id %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Nama Kabupaten/Kota
+			</td>
+			<td>
+				<input type="text" name="kabkot_nama" value="<%= @kabkot.kabkot_nama %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td align="right">
+				<input type="submit" class="button tiny" value="Simpan" onclick="admKabkot.formSave(<%= @kabkot.id %>);return false;">
+			</td>
+		</tr>
+	</table>
+</form>

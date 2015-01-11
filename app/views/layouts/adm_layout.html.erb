@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SPM</title>
+
+  	<link rel="stylesheet" type="text/css" href="/jeasy-1.4.1/themes/default/easyui.css">
+  	<link rel="stylesheet" type="text/css" href="/jeasy-1.4.1/themes/icon.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+
+	<script type="text/javascript" src="/jeasy-1.4.1/jquery.easyui.min.js"></script>
+</head>
+<body class="easyui-layout">
+
+<%= yield %>
+
+</body>
+</html>

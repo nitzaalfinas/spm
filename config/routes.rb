@@ -1,56 +1,39 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  
+  get 'adm/panel', to: 'adm_panel#index'  
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  get 'adm/provinsis', to: 'adm_provinsi#grid'
+  get 'adm/provinsis/grid/data', to: 'adm_provinsi#grid_data'
+  get 'adm/provinsis/form/:id', to: 'adm_provinsi#form'
+  post 'adm/provinsis/form/save', to: 'adm_provinsi#form_save'
+  post 'adm/provinsis/hapus/:id', to: 'adm_provinsi#hapus'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get 'adm/kabkots', to: 'adm_kabkot#grid'
+  get 'adm/kabkots/grid/data', to: 'adm_kabkot#grid_data'
+  get 'adm/kabkots/form/:id', to: 'adm_kabkot#form'
+  post 'adm/kabkots/form/save', to: 'adm_kabkot#form_save'
+  post 'adm/kabkots/hapus/:id', to: 'adm_kabkot#hapus'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  get 'adm/bidangs', to: 'adm_bidang#grid'
+  get 'adm/bidangs/grid/data', to: 'adm_bidang#grid_data'
+  get 'adm/bidangs/form/:id', to: 'adm_bidang#form'
+  post 'adm/bidangs/form/create', to: 'adm_bidang#form_create'
+  post 'adm/bidangs/form/update', to: 'adm_bidang#form_update'
+  post 'adm/bidangs/hapus/:id', to: 'adm_bidang#hapus'
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  get 'adm/jenis_pelayanans', to: 'adm_jenis_pelayanan#grid'
+  get 'adm/jenis_pelayanans/grid/data', to: 'adm_jenis_pelayanan#grid_data'
+  get 'adm/jenis_pelayanans/form/:id', to: 'adm_jenis_pelayanan#form'
+  post 'adm/jenis_pelayanans/form/create', to: 'adm_jenis_pelayanan#form_create'
+  post 'adm/jenis_pelayanans/form/update', to: 'adm_jenis_pelayanan#form_update'
+  post 'adm/jenis_pelayanans/hapus/:id', to: 'adm_jenis_pelayanan#hapus'
 
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+  get 'adm/indikators', to: 'adm_indikator#grid'
+  get 'adm/indikators/grid/data', to: 'adm_indikator#grid_data'
+  get 'adm/indikators/form/:id', to: 'adm_indikator#form'
+  post 'adm/indikators/form/create', to: 'adm_indikator#form_create'
+  post 'adm/indikators/form/update', to: 'adm_indikator#form_update'
+  post 'adm/indikators/hapus/:id', to: 'adm_indikator#hapus'
+  get 'adm/indikators/opt_jenis_pelayanan', to: 'adm_indikator#opt_jenis_pelayanan'
 
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

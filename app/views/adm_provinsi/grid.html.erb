@@ -1,0 +1,22 @@
+<table id="adm_provinsi_grid" 
+    class="easyui-datagrid" 
+    data-options="method: 'GET', border: false, fit:true, pageSize: 20"
+    singleSelect="true"
+    url="/adm/provinsis/grid/data"
+    rownumbers="true" 
+    toolbar="#adm_provinsi_toolbar"
+    pagination="true">
+    <thead>
+        <tr>
+            <th field="action" formatter="admProvinsi.actions" align="center">Action</th>
+            <th field="id" sortable="true">ID Provinsi</th>
+            <th field="provinsi_nama" sortable="true">Nama Provinsi</th>
+        </tr>
+    </thead>
+</table>
+<div id="adm_provinsi_toolbar" style="display: table; padding: 5px 10px; width: 100%;">
+    <a href="#" class="button small" onclick="admProvinsi.createWindow(0);" >
+        Tambah
+    </a>
+</div>
+    

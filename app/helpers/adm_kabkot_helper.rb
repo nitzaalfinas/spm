@@ -1,0 +1,2 @@
+module AdmKabkotHelper
+end

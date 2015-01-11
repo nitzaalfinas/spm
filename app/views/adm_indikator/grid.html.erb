@@ -1,0 +1,24 @@
+<table id="adm_indikator_grid" 
+    class="easyui-datagrid" 
+    data-options="method: 'GET', border: false, fit:true, pageSize: 20"
+    singleSelect="true"
+    url="/adm/indikators/grid/data"
+    rownumbers="true" 
+    toolbar="#adm_indikator_toolbar"
+    pagination="true">
+    <thead>
+        <tr>
+            <th field="id" sortable="true" width="40" hidden="true">ID</th>
+            <th field="action" formatter="admIndikator.actions" align="center">Action</th>
+            <th field="nama_bidang" sortable="true">Nama Bidang</th>
+            <th field="jenis_pelayanan_nama" sortable="true">Nama Jenis Pelayanan</th>
+            <th field="nama_indikator" sortable="true">Nama Indikator</th>
+        </tr>
+    </thead>
+</table>
+<div id="adm_indikator_toolbar" style="display: table; padding: 5px 10px; width: 100%;">
+    <a href="#" class="button small" onclick="admIndikator.createWindow(0);" >
+        Tambah
+    </a>
+</div>
+    
