@@ -1,5 +1,7 @@
 class AdmJenisPelayananController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def grid
 		render :layout => false
 	end

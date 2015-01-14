@@ -1,5 +1,7 @@
 class AdmIndikatorController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def grid
 		render :layout => false
 	end
@@ -30,7 +32,16 @@ class AdmIndikatorController < ApplicationController
 
 		@indikators = VIndikator.order(ordexx).limit(rows).offset(startx)
 		@indikator_list = @indikators.map do |u|
-			{ :id => u.id, :bidang_id => u.bidang_id, :nama_bidang => u.nama_bidang, :jenis_pelayanan_id => u.jenis_pelayanan_id, :jenis_pelayanan_nama => u.jenis_pelayanan_nama, :nama_indikator => u.nama_indikator }
+			{ 
+				:id => u.id, 
+				:bidang_id => u.bidang_id, 
+				:nama_bidang => u.nama_bidang, 
+				:jenis_pelayanan_id => u.jenis_pelayanan_id, 
+				:jenis_pelayanan_nama => u.jenis_pelayanan_nama, 
+				:nama_indikator => u.nama_indikator,
+				:nilai_default => u.nilai_default,
+				:batas_waktu_default => u.batas_waktu_default
+			}
 		end
 
 		arrdta = {"total"=>total,"rows"=>@indikator_list}
@@ -62,6 +73,8 @@ class AdmIndikatorController < ApplicationController
 		kk.bidang_id = params[:bidang_id]
 		kk.jenis_pelayanan_id = params[:jenis_pelayanan_id]
 		kk.nama_indikator = params[:nama_indikator]
+		kk.nilai_default = params[:nilai_default]
+		kk.batas_waktu_default = params[:batas_waktu_default]
 		kk.save
 		render inline: "success"
 	end
@@ -72,6 +85,8 @@ class AdmIndikatorController < ApplicationController
 		kk.bidang_id = params[:bidang_id]
 		kk.jenis_pelayanan_id = params[:jenis_pelayanan_id]
 		kk.nama_indikator = params[:nama_indikator]
+		kk.nilai_default = params[:nilai_default]
+		kk.batas_waktu_default = params[:batas_waktu_default]
 		kk.save
 		render inline: "success"
 	end

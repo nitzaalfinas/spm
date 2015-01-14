@@ -1,0 +1,41 @@
+<form class="pt10 pr10 pb10 pl10" id="pengguna_form">
+	<table>
+		<tr>
+			<td>
+				Email
+			</td>
+			<td>
+				<input type="email" name="email" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Password
+			</td>
+			<td>
+				<input type="password" name="encrypted_password" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Level
+			</td>
+			<td>
+				<select name="level">
+					<option value="adm_pusat">Admin Pusat</option>
+					<option value="adm_prov">Admin Provinsi</option>
+					<option value="adm_kabkot">Admin Kabupaten/Kota</option>
+				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td>
+				<input type="submit" class="button tiny" value="Simpan" onclick="admPengguna.formSaveInsert();return false;">
+			</td>
+		</tr>
+	</table>
+</form>

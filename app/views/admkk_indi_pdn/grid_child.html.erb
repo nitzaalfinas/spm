@@ -1,0 +1,180 @@
+<div style="height: 300px; width: 100%; display: table;">
+    <table id="dgpdn_<%= @indikator_id.to_s %>" 
+        class="easyui-datagrid" 
+        data-options="method: 'GET', border: false, fit:true, pageSize: 20"
+        singleSelect="true"
+        url="/admkk/indi/pera/grid_data/child_data",
+        rownumbers="true"
+        pagination="true">
+        <thead>
+            <tr>
+                <th field="tahun" sortable="true">Tahun</th>
+                
+                <!-- 83 -->
+                <% if(@indikator_id.to_s == '83') %>
+                <th field="k1_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k1_1') %>
+                </th>
+                <th field="k1_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k1_2') %>
+                </th>
+                <th field="k1_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k1_3') %>
+                </th>
+                <% end %>
+
+                <!-- 84 -->
+                <% if(@indikator_id.to_s == '84') %>
+                <th field="k2_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k2_1') %>
+                </th>
+                <th field="k2_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k2_2') %>
+                </th>
+                <th field="k2_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k2_3') %>
+                </th>
+                <% end %>
+
+                <!-- 85 -->
+                <% if(@indikator_id.to_s == '85') %>
+                <th field="k3_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k3_1') %>
+                </th>
+                <th field="k3_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k3_2') %>
+                </th>
+                <th field="k3_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k3_3') %>
+                </th>
+                <% end %>
+
+                <!-- 86 -->
+                <% if(@indikator_id.to_s == '86') %>
+                <th field="k4_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k4_1') %>
+                </th>
+                <th field="k4_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k4_2') %>
+                </th>
+                <th field="k4_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k4_3') %>
+                </th>
+                <% end %>
+
+                <!-- 87 -->
+                <% if(@indikator_id.to_s == '87') %>
+                <th field="k5_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k5_1') %>
+                </th>
+                <th field="k5_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k5_2') %>
+                </th>
+                <th field="k5_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k5_3') %>
+                </th>
+                <% end %>
+
+                <!-- 88 -->
+                <% if(@indikator_id.to_s == '88') %>
+                <th field="k6_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k6_1') %>
+                </th>
+                <th field="k6_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k6_2') %>
+                </th>
+                <th field="k6_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k6_3') %>
+                </th>
+                <% end %>
+
+                <!-- 89 -->
+                <% if(@indikator_id.to_s == '89') %>
+                <th field="k7_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k7_1') %>
+                </th>
+                <th field="k7_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k7_2') %>
+                </th>
+                <th field="k7_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k7_3') %>
+                </th>
+                <% end %>
+
+                <!-- 90 -->
+                <% if(@indikator_id.to_s == '90') %>
+                <th field="k8_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k8_1') %>
+                </th>
+                <th field="k8_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k8_2') %>
+                </th>
+                <th field="k8_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k8_3') %>
+                </th>
+                <% end %>
+
+                <!-- 91 -->
+                <% if(@indikator_id.to_s == '91') %>
+                <th field="k9_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k9_1') %>
+                </th>
+                <th field="k9_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k9_2') %>
+                </th>
+                <th field="k9_3" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k9_3') %>
+                </th>
+                <th field="k9_4" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k9_4') %>
+                </th>
+                <th field="k9_5" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k9_5') %>
+                </th>
+                <th field="k9_6" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k9_6') %>
+                </th>
+                <th field="k9_7" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k9_7') %>
+                </th>
+                <% end %>
+
+                <!-- 92 -->
+                <% if(@indikator_id.to_s == '92') %>
+                <th field="k10_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k10_1') %>
+                </th>
+                <th field="k10_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k10_2') %>
+                </th>
+                <th field="k10_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k10_3') %>
+                </th>
+                <% end %>
+
+                <!-- 93 -->
+                <% if(@indikator_id.to_s == '93') %>
+                <th field="k11_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k11_1') %>
+                </th>
+                <th field="k11_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k11_2') %>
+                </th>
+                <th field="k11_3" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k11_3') %>
+                </th>
+                <% end %>
+
+            </tr>
+        </thead>
+    </table>
+</div>
+    
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#dgpdn_<%= @indikator_id.to_s %>').edatagrid({
+        url: '/admkk/indi/pdn/grid_data/child_data',
+        updateUrl: '/admkk/indi/pdn/grid_data/child_update'
+    });
+});
+</script>

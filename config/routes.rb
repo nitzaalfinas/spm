@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
   
+  devise_for :users
+
+
+
+  #HALAMAN ADMINISTRASI UNTUK ADMIN PUSAT
   get 'adm/panel', to: 'adm_panel#index'  
+
+  get 'adm/penggunas', to: 'adm_pengguna#grid'
+  get 'adm/penggunas/grid/data', to: 'adm_pengguna#grid_data'
+  get 'adm/penggunas/form/tambah', to: 'adm_pengguna#form_tambah'
+  post 'adm/penggunas/form/save_insert', to: 'adm_pengguna#form_save_insert'
+  get 'adm/penggunas/form/:id', to: 'adm_pengguna#form_edit'
+  post 'adm/penggunas/form/save_edit', to: 'adm_pengguna#form_save_edit'
+  post 'adm/penggunas/hapus/:id', to: 'adm_pengguna#hapus'
 
   get 'adm/provinsis', to: 'adm_provinsi#grid'
   get 'adm/provinsis/grid/data', to: 'adm_provinsi#grid_data'
@@ -35,5 +48,51 @@ Rails.application.routes.draw do
   post 'adm/indikators/form/update', to: 'adm_indikator#form_update'
   post 'adm/indikators/hapus/:id', to: 'adm_indikator#hapus'
   get 'adm/indikators/opt_jenis_pelayanan', to: 'adm_indikator#opt_jenis_pelayanan'
+
+
+  #URL UNTUK ADMIN KABUPATEN/KOTA
+  get 'admkk/panel', to: 'admkk_panel#index'  
+
+  #1
+  get 'admkk/indi/kesehatan', to: 'admkk_indi_kesehatan#index'
+  get 'admkk/indi/kesehatan/grid_data', to: 'admkk_indi_kesehatan#grid_data'
+  get 'admkk/indi/kesehatan/grid_data/child', to: 'admkk_indi_kesehatan#grid_child'
+  get 'admkk/indi/kesehatan/grid_data/child_data', to: 'admkk_indi_kesehatan#child_data'
+  post 'admkk/indi/kesehatan/grid_data/child_update', to: 'admkk_indi_kesehatan#child_update'
+
+  #2
+  get 'admkk/indi/sos', to: 'admkk_indi_sos#index'
+  get 'admkk/indi/sos/grid_data', to: 'admkk_indi_sos#grid_data'
+  get 'admkk/indi/sos/grid_data/child', to: 'admkk_indi_sos#grid_child'
+  get 'admkk/indi/sos/grid_data/child_data', to: 'admkk_indi_sos#child_data'
+  post 'admkk/indi/sos/grid_data/child_update', to: 'admkk_indi_sos#child_update'
+
+  #3
+  get 'admkk/indi/lh', to: 'admkk_indi_lh#index'
+  get 'admkk/indi/lh/grid_data', to: 'admkk_indi_lh#grid_data'
+  get 'admkk/indi/lh/grid_data/child', to: 'admkk_indi_lh#grid_child'
+  get 'admkk/indi/lh/grid_data/child_data', to: 'admkk_indi_lh#child_data'
+  post 'admkk/indi/lh/grid_data/child_update', to: 'admkk_indi_lh#child_update'
+
+  #4
+  get 'admkk/indi/pdn', to: 'admkk_indi_pdn#index'
+  get 'admkk/indi/pdn/grid_data', to: 'admkk_indi_pdn#grid_data'
+  get 'admkk/indi/pdn/grid_data/child', to: 'admkk_indi_pdn#grid_child'
+  get 'admkk/indi/pdn/grid_data/child_data', to: 'admkk_indi_pdn#child_data'
+  post 'admkk/indi/pdn/grid_data/child_update', to: 'admkk_indi_pdn#child_update'
+
+  #5
+  get 'admkk/indi/pera', to: 'admkk_indi_pera#index'
+  get 'admkk/indi/pera/grid_data', to: 'admkk_indi_pera#grid_data'
+  get 'admkk/indi/pera/grid_data/child', to: 'admkk_indi_pera#grid_child'
+  get 'admkk/indi/pera/grid_data/child_data', to: 'admkk_indi_pera#child_data'
+  post 'admkk/indi/pera/grid_data/child_update', to: 'admkk_indi_pera#child_update'
+
+  #7
+  get 'admkk/indi/kb', to: 'admkk_indi_kb#index'
+  get 'admkk/indi/kb/grid_data', to: 'admkk_indi_kb#grid_data'
+  get 'admkk/indi/kb/grid_data/child', to: 'admkk_indi_kb#grid_child'
+  get 'admkk/indi/kb/grid_data/child_data', to: 'admkk_indi_kb#child_data'
+  post 'admkk/indi/kb/grid_data/child_update', to: 'admkk_indi_kb#child_update'
 
 end

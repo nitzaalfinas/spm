@@ -2,6 +2,8 @@
     class="easyui-datagrid" 
     data-options="method: 'GET', border: false, fit:true, pageSize: 20"
     singleSelect="true"
+    sortName="bidang_id"
+    sortOrder="asc"
     url="/adm/indikators/grid/data"
     rownumbers="true" 
     toolbar="#adm_indikator_toolbar"
@@ -10,9 +12,11 @@
         <tr>
             <th field="id" sortable="true" width="40" hidden="true">ID</th>
             <th field="action" formatter="admIndikator.actions" align="center">Action</th>
-            <th field="nama_bidang" sortable="true">Nama Bidang</th>
-            <th field="jenis_pelayanan_nama" sortable="true">Nama Jenis Pelayanan</th>
-            <th field="nama_indikator" sortable="true">Nama Indikator</th>
+            <th field="nama_bidang" sortable="true">Bidang</th>
+            <th field="jenis_pelayanan_nama" sortable="true">Jenis Pelayanan</th>
+            <th field="nama_indikator" sortable="true">Indikator</th>
+            <th field="nilai_default" sortable="true">Nilai Default (%)</th>
+            <th field="batas_waktu_default" sortable="true">Batas Waktu Default</th>
         </tr>
     </thead>
 </table>

@@ -1,0 +1,116 @@
+<div style="height: 300px; width: 100%; display: table;">
+    <table id="dgsos_<%= @indikator_id.to_s %>" 
+        class="easyui-datagrid" 
+        data-options="method: 'GET', border: false, fit:true, pageSize: 20"
+        singleSelect="true"
+        url="/admkk/indi/sos/grid_data/child_data",
+        rownumbers="true"
+        pagination="true">
+        <thead>
+            <tr>
+                <th field="tahun" sortable="true">Tahun</th>
+                
+                <!-- 101 -->
+                <% if(@indikator_id.to_s == '101') %>
+                <th field="k1_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k1_1') %>
+                </th>
+                <th field="k1_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k1_2') %>
+                </th>
+                <th field="k1_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k1_3') %>
+                </th>
+                <% end %>
+
+                <!-- 102 -->
+                <% if(@indikator_id.to_s == '102') %>
+                <th field="k2_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k2_1') %>
+                </th>
+                <th field="k2_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k2_2') %>
+                </th>
+                <th field="k2_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k2_3') %>
+                </th>
+                <% end %>
+
+                <!-- 103 -->
+                <% if(@indikator_id.to_s == '103') %>
+                <th field="k3_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k3_1') %>
+                </th>
+                <th field="k3_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k3_2') %>
+                </th>
+                <th field="k3_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k3_3') %>
+                </th>
+                <% end %>
+
+                <!-- 104 -->
+                <% if(@indikator_id.to_s == '104') %>
+                <th field="k4_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k4_1') %>
+                </th>
+                <th field="k4_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k4_2') %>
+                </th>
+                <th field="k4_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k4_3') %>
+                </th>
+                <% end %>
+
+                <!-- 105 -->
+                <% if(@indikator_id.to_s == '105') %>
+                <th field="k5_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k5_1') %>
+                </th>
+                <th field="k5_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k5_2') %>
+                </th>
+                <th field="k5_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k5_3') %>
+                </th>
+                <% end %>
+
+                <!-- 106 -->
+                <% if(@indikator_id.to_s == '106') %>
+                <th field="k6_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k6_1') %>
+                </th>
+                <th field="k6_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k6_2') %>
+                </th>
+                <th field="k6_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k6_3') %>
+                </th>
+                <% end %>
+
+                <!-- 107 -->
+                <% if(@indikator_id.to_s == '107') %>
+                <th field="k7_1" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k7_1') %>
+                </th>
+                <th field="k7_2" sortable="true" editor="{type:'numberbox'}">
+                    <%= judul_field('k7_2') %>
+                </th>
+                <th field="k7_3" sortable="true" editor="{type:'textbox'}">
+                    <%= judul_field('k7_3') %>
+                </th>
+                <% end %>
+
+            </tr>
+        </thead>
+    </table>
+</div>
+    
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#dgsos_<%= @indikator_id.to_s %>').edatagrid({
+        url: '/admkk/indi/sos/grid_data/child_data',
+        updateUrl: '/admkk/indi/sos/grid_data/child_update'
+    });
+});
+</script>

@@ -1,0 +1,107 @@
+<div data-options="region:'north'" style="height:50px;">
+	<h1>SPM KEMENTERIAN DALAM NEGERI - ALFA 1</h1>
+</div>
+<div data-options="region:'west',title:'Navigasi',split:true" style="width:200px;" id="west">
+	<div id="aa" class="easyui-accordion">
+        <div title="Admin" data-options="selected:true" style="padding:10px;">
+            <ul class="easyui-tree">
+                <li>
+                    <span>
+                        <a href="#">Indikator</a>
+                    </span>
+                    <ul>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Kesehatan','/admkk/indi/kesehatan');">Kesehatan</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Sosial','/admkk/indi/sos');">Sosial</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Lingkungan Hidup','/admkk/indi/lh');">Lingkungan Hidup</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Pemerintahan Dalam Negeri','/admkk/indi/pdn');">Pemerintahan Dalam Negeri</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Perumahan Rakyat','/admkk/indi/pera');">Perumahan Rakyat</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('PPPA','/admkk/indi/kesehatan');">PPPA</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Keluarga Berencana','/admkk/indi/kb');">Keluarga Berencana</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Pendidikan','/admkk/indi/kesehatan');">Pendidikan</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Pekerjaan Umum dan Penataan Ruang','/admkk/indi/kesehatan');">Pekerjaan Umum dan Penataan Ruang</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Ketenaga Kerjaan','/admkk/indi/kesehatan');">Ketenaga Kerjaan</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Ketenaga Kerjaan','/admkk/indi/kesehatan');">Komunikasi dan Informasi</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Ketenaga Kerjaan','/admkk/indi/kesehatan');">Ketahanan Pangan</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Ketenaga Kerjaan','/admkk/indi/kesehatan');">Kesenian</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Ketenaga Kerjaan','/admkk/indi/kesehatan');">Perhubungan</a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="xcore.addTab('Ketenaga Kerjaan','/admkk/indi/kesehatan');">Penanaman Modal</a>
+                        </li>
+
+                    </ul>
+                </li>
+			</ul>
+        </div>
+        <div title="Akun" style="padding:10px;">
+            <ul class="easyui-tree">
+                <li>
+                    <span>
+                        <a href="#" onclick="xcore.keluar();">Keluar</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div data-options="region:'center'" style="background:#eee;">
+	<div id="main_tab" class="easyui-tabs" data-options="fit:true,border:false"></div>
+</div>
+
+<div id="theForm"></div>
+
+
+<script type="text/javascript">
+var xcore = {
+	addTab: function(title,url,id) {
+        if ($('#main_tab').tabs('exists', title)) {
+            $('#main_tab').tabs('select', title);
+        } else {
+            var content = 'added tab';
+            $('#main_tab').tabs('add', {
+                id: id,
+                title: title,
+                content: content,
+                closable: true,
+                href: url
+            });
+        }
+    },
+    keluar: function() {
+        $.ajax({
+            url: '/users/sign_out',
+            type: 'DELETE',
+            success: function() {
+                window.location.reload();
+            }
+        });
+    }
+};
+</script>

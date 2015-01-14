@@ -1,0 +1,2 @@
+module AdmkkIndiPdnHelper
+end

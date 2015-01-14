@@ -1,0 +1,25 @@
+<table id="adm_pengguna_grid" 
+    class="easyui-datagrid" 
+    data-options="method: 'GET', border: false, fit:true, pageSize: 20"
+    singleSelect="true"
+    url="/adm/penggunas/grid/data"
+    rownumbers="true" 
+    toolbar="#adm_pengguna_toolbar"
+    pagination="true">
+    <thead>
+        <tr>
+            <th field="action" formatter="admPengguna.actions" align="center">Action</th>
+            <th field="email" sortable="true">Email</th>
+            <th field="full_name" sortable="true">Nama Lengkap</th>
+            <th field="level" sortable="true">Level</th>
+            <th field="provinsi_nama" sortable="true">Nama Provinsi</th>
+            <th field="kabkot_nama" sortable="true">Nama Kabupaten/Kota</th>
+        </tr>
+    </thead>
+</table>
+<div id="adm_pengguna_toolbar" style="display: table; padding: 5px 10px; width: 100%;">
+    <a href="#" class="button small" onclick="admPengguna.createWindowTambah();" >
+        Tambah
+    </a>
+</div>
+    

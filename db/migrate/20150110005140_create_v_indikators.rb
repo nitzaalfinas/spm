@@ -8,7 +8,9 @@ class CreateVIndikators < ActiveRecord::Migration
 					bidangs.nama_bidang,
 				indikators.jenis_pelayanan_id,
 					jenis_pelayanans.jenis_pelayanan_nama,
-				indikators.nama_indikator
+				indikators.nama_indikator,
+				indikators.nilai_default,
+				indikators.batas_waktu_default
 			from
 				indikators 
 					left join bidangs on indikators.bidang_id = bidangs.id

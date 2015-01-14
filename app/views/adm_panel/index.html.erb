@@ -1,5 +1,5 @@
 <div data-options="region:'north'" style="height:50px;">
-	<h1>DMS</h1>
+	<h1>SPM</h1>
 </div>
 <div data-options="region:'west',title:'Navigasi',split:true" style="width:200px;" id="west">
 	<div id="aa" class="easyui-accordion">
@@ -8,6 +8,11 @@
         </div>
         <div title="Admin" data-options="selected:true" style="padding:10px;">
             <ul class="easyui-tree">
+                <li>
+                    <span>
+                        <a href="#" onclick="xcore.addTab('Pengguna','/adm/penggunas');">Pengguna</a>
+                    </span>
+                </li>
 			    <li>
                     <span>
                         <a href="#" onclick="xcore.addTab('Provinsi','/adm/provinsis');">Provinsi</a>
@@ -35,6 +40,15 @@
                 </li>
 			</ul>
         </div>
+        <div title="Akun" style="padding:10px;">
+            <ul class="easyui-tree">
+                <li>
+                    <span>
+                        <a href="#" onclick="xcore.keluar();">Keluar</a>
+                    </span>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 <div data-options="region:'center'" style="background:#eee;">
@@ -59,9 +73,89 @@ var xcore = {
                 href: url
             });
         }
+    },
+    keluar: function() {
+        $.ajax({
+            url: '/users/sign_out',
+            type: 'DELETE',
+            success: function() {
+                window.location.reload();
+            }
+        });
     }
 };
 
+var admPengguna = {
+    actions: function(value,row,index) {
+        var e = '<a href="#" title="Edit" onclick="admPengguna.createWindowEdit('+row.id+');"><i class="fa fa-pencil-square-o"></i></a>';
+        var f = '<a href="#" title="Hapus" onclick="admPengguna.hapus('+row.id+');">Hapus</a>';
+        
+        return e+' '+f;
+    },
+    createWindowTambah: function() {
+        $('#theForm').window({
+            width:360,
+            height:200,
+            modal:true,
+            title: 'Formulir Pengguna'
+        });
+        $('#theForm').window('refresh','/adm/penggunas/form/tambah');
+    },
+    createWindowEdit: function(id) {
+        $('#theForm').window({
+            width:360,
+            height:160,
+            modal:true,
+            title: 'Formulir Pengguna'
+        });
+        $('#theForm').window('refresh','/adm/penggunas/form/'+id);
+    },
+    formSaveInsert: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = "/adm/penggunas/form/save_insert";
+        
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_pengguna_grid').datagrid('reload');
+            }
+        });
+    },
+    formSaveEdit: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = "/adm/penggunas/form/save_edit";
+        
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_pengguna_grid').datagrid('reload');
+            }
+        });
+    },
+    hapus: function(id) {
+        var pilihan = confirm("Apakah benar ingin menghapus data ini?");
+        if(pilihan == true) {
+            $.ajax({
+                url: '/adm/penggunas/hapus/'+id,
+                type: 'POST',
+                success: function(response) {
+                    $('#adm_pengguna_grid').datagrid('reload');
+                }
+            });  
+        }
+        else {
+            //do nothing
+        }
+    }
+};
 
 var admProvinsi = {
     actions: function(value,row,index) {
@@ -110,6 +204,7 @@ var admProvinsi = {
         }
     }
 };
+
 
 var admKabkot = {
     actions: function(value,row,index) {
@@ -271,7 +366,7 @@ var admIndikator = {
     createWindow: function(id) {
         $('#theForm').window({
             width:360,
-            height:230,
+            height:290,
             modal:true,
             title: 'Formulir Indikator'
         });

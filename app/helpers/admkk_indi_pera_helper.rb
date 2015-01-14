@@ -1,0 +1,2 @@
+module AdmkkIndiPeraHelper
+end
