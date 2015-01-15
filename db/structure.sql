@@ -46,6 +46,8 @@ CREATE TABLE `indikators` (
   `nilai_default` int(11) DEFAULT NULL,
   `batas_waktu_default` int(4) DEFAULT NULL,
   `penanggungjawab` varchar(1000) NOT NULL,
+  `rumus` varchar(500) DEFAULT NULL,
+  `keterangan` varchar(1000) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -375,6 +377,49 @@ CREATE TABLE `ni_sos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `ni_varxes`
+--
+
+DROP TABLE IF EXISTS `ni_varxes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ni_varxes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provinsi_id` int(11) DEFAULT NULL,
+  `kabkot_id` int(11) DEFAULT NULL,
+  `varx_id` int(11) DEFAULT NULL,
+  `nilai` int(11) DEFAULT NULL,
+  `t02` int(11) DEFAULT NULL,
+  `t03` int(11) DEFAULT NULL,
+  `t04` int(11) DEFAULT NULL,
+  `t05` int(11) DEFAULT NULL,
+  `t06` int(11) DEFAULT NULL,
+  `t07` int(11) DEFAULT NULL,
+  `t08` int(11) DEFAULT NULL,
+  `t09` int(11) DEFAULT NULL,
+  `t10` int(11) DEFAULT NULL,
+  `t11` int(11) DEFAULT NULL,
+  `t12` int(11) DEFAULT NULL,
+  `t13` int(11) DEFAULT NULL,
+  `t14` int(11) DEFAULT NULL,
+  `t15` int(11) DEFAULT NULL,
+  `t16` int(11) DEFAULT NULL,
+  `t17` int(11) DEFAULT NULL,
+  `t18` int(11) DEFAULT NULL,
+  `t19` int(11) DEFAULT NULL,
+  `t20` int(11) DEFAULT NULL,
+  `t21` int(11) DEFAULT NULL,
+  `t22` int(11) DEFAULT NULL,
+  `t23` int(11) DEFAULT NULL,
+  `t24` int(11) DEFAULT NULL,
+  `t25` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `nilai_indikators`
 --
 
@@ -592,11 +637,12 @@ CREATE TABLE `varxes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `indikator_id` int(11) DEFAULT NULL,
   `var_nama` varchar(255) DEFAULT NULL,
+  `satuan` varchar(30) NOT NULL,
   `keterangan` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -703,7 +749,7 @@ CREATE TABLE `varxes` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-14 15:31:51
+-- Dump completed on 2015-01-15  9:31:54
 INSERT INTO schema_migrations (version) VALUES ('20141112140135');
 
 INSERT INTO schema_migrations (version) VALUES ('20141117163217');
@@ -743,4 +789,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150112015031');
 INSERT INTO schema_migrations (version) VALUES ('20150112061952');
 
 INSERT INTO schema_migrations (version) VALUES ('20150114083128');
+
+INSERT INTO schema_migrations (version) VALUES ('20150115023130');
 

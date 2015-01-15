@@ -59,8 +59,16 @@ Rails.application.routes.draw do
   
 
 
+
+
   #URL UNTUK ADMIN KABUPATEN/KOTA
   get 'admkk/panel', to: 'admkk_panel#index'  
+
+  get 'admkk/indib', to: 'admkk_indib#index'
+  get 'admkk/indib/grid_data', to: 'admkk_indib#grid_data'
+  get 'admkk/indib/child', to: 'admkk_indib#child'
+  get 'admkk/indib/child/data', to: 'admkk_indib#child_data'
+
 
   #1
   get 'admkk/indi/kesehatan', to: 'admkk_indi_kesehatan#index'
@@ -68,6 +76,8 @@ Rails.application.routes.draw do
   get 'admkk/indi/kesehatan/grid_data/child', to: 'admkk_indi_kesehatan#grid_child'
   get 'admkk/indi/kesehatan/grid_data/child_data', to: 'admkk_indi_kesehatan#child_data'
   post 'admkk/indi/kesehatan/grid_data/child_update', to: 'admkk_indi_kesehatan#child_update'
+
+  
 
   #2
   get 'admkk/indi/sos', to: 'admkk_indi_sos#index'

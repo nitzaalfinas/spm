@@ -9,7 +9,7 @@
             <tr>
                 <th field="id" sortable="true" width="40">ID</th>
                 <th field="var_nama" sortable="true" editor="{type:'textbox'}" width="300">Nama Variabel</th>
-                <th field="satuan" sortable="true" editor="{type:'textbox'}" width="100">Nama Variabel</th>
+                <th field="satuan" sortable="true" editor="{type:'textbox'}" width="100">Satuan</th>
                 <th field="keterangan" sortable="true" editor="{type:'textbox'}" width="300">Keterangan</th>
             </tr>
         </thead>
@@ -41,8 +41,8 @@
 <script type="text/javascript">
     $('#adm_varx<%= @indikator_id %>_grid').edatagrid({
         url: '/adm/varxes/child/data?indikator_id=<%= @indikator_id %>',
-        saveUrl: '/adm/varxes/child/data_insert?indikator_id=<%= @indikator_id %>',
-        updateUrl: '/adm/varxes/child/data_update?indikator_id=<%= @indikator_id %>',
+        saveUrl: '/adm/varxes/child/data_insert?indikator_id=<%= @indikator_id %>&bidang_id=<%= @bidang_id %>',
+        updateUrl: '/adm/varxes/child/data_update?indikator_id=<%= @indikator_id %>&bidang_id=<%= @bidang_id %>',
         destroyUrl: '/adm/varxes/child/data_destroy'
     });
 </script>

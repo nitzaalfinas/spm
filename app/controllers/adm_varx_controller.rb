@@ -53,44 +53,8 @@ class AdmVarxController < ApplicationController
 
 	def child
 		@indikator_id = params[:itemid]
+		@bidang_id = params[:bidang_id]
 	end #child
-
-	def child_datax
-		indikator_id = params[:indikator_id]
-		rows = params[:rows].to_i
-		sortx = params[:sort]
-		orderx = params[:order]
-
-		#mencari offset
-		if(!params[:page])
-			page = 1
-		else
-			page = params[:page].to_i
-		end
-
-		startx = (page - 1) * rows
-
-		#ordering (jika parameter sortx ada, maka ini dijalankan)
-		if(sortx)
-			ordexx = sortx+" "+orderx
-		else 
-			orderxx = "id desc"
-		end
-
-		#semua data
-		total = Varx.where('indikator_id = ?', indikator_id.to_i).size
-
-		@datas = Varx.where('indikator_id = ?', indikator_id.to_i).order(ordexx).limit(rows).offset(startx)
-		@data_list = @datas.map do |u|
-			{ :id => u.id, :var_nama => u.var_nama, :satuan => u.satuan, :keterangan => u.keterangan }
-		end
-
-		arrdta = {"total"=>total,"rows"=>@data_list}
-
-		json = arrdta.to_json
-		
-		render json: json
-	end #child_data
 
 	def child_data
 		indikator_id = params[:indikator_id]
@@ -110,6 +74,7 @@ class AdmVarxController < ApplicationController
 
 	def child_data_insert
 		@vardat = Varx.new
+		@vardat.bidang_id = params[:bidang_id]
 		@vardat.indikator_id = params[:indikator_id]
 		@vardat.var_nama = params[:var_nama]
 		@vardat.satuan = params[:satuan]
@@ -120,6 +85,7 @@ class AdmVarxController < ApplicationController
 
 	def child_data_update
 		@vardat = Varx.find(params[:id])
+		@vardat.bidang_id = params[:bidang_id]
 		@vardat.indikator_id = params[:indikator_id]
 		@vardat.var_nama = params[:var_nama]
 		@vardat.satuan = params[:satuan]

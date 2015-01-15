@@ -1,0 +1,46 @@
+<div style="height: 300px; width: 100%;">
+    <table id="admkk_varx<%= @indikator_id %>_grid" 
+        class="easyui-datagrid" 
+        data-options="method: 'GET', border: false, fit:true, pageSize: 10"
+        singleSelect="true"
+        nowrap="false"
+        toolbar="#admkk_varx<%= @indikator_id %>_toolbar">
+        <thead>
+            <tr>
+                <th field="id" sortable="true" width="40">ID</th>
+                <th field="varx_id" sortable="true" editor="{type:'textbox'}" width="300">ID Variabel</th>
+                <th field="nilai" sortable="true" editor="{type:'textbox'}" width="100">Nilai</th>
+                <th field="t02" sortable="true" editor="{type:'textbox'}" width="100">2002</th>
+                <th field="t03" sortable="true" editor="{type:'textbox'}" width="100">2003</th>
+                <th field="t04" sortable="true" editor="{type:'textbox'}" width="100">2004</th>
+                <th field="t05" sortable="true" editor="{type:'textbox'}" width="100">2005</th>
+                <th field="t06" sortable="true" editor="{type:'textbox'}" width="100">2006</th>
+                <th field="t07" sortable="true" editor="{type:'textbox'}" width="100">2007</th>
+                <th field="t08" sortable="true" editor="{type:'textbox'}" width="100">2008</th>
+                <th field="t09" sortable="true" editor="{type:'textbox'}" width="100">2009</th>
+                <th field="t10" sortable="true" editor="{type:'textbox'}" width="100">2010</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="admkk_varx<%= @indikator_id %>_toolbar" style="display: table; padding: 5px 10px; width: 100%;">
+        <a href="#" 
+            onclick="javascript:$('#admkk_varx<%= @indikator_id %>_grid').edatagrid('saveRow');" 
+            style="margin:5px;">
+            Simpan
+        </a>
+        <a href="#" 
+            onclick="javascript:$('#admkk_varx<%= @indikator_id %>_grid').datagrid('reload');" 
+            style="margin:5px;">
+            Reload
+        </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#admkk_varx<%= @indikator_id %>_grid').edatagrid({
+        url: '/admkk/indib/child/data?indikator_id=<%= @indikator_id %>',
+        saveUrl: '/admkk/indib/child/data_insert?indikator_id=<%= @indikator_id %>&bidang_id=<%= @bidang_id %>',
+        updateUrl: '/admkk/indib/child/data_update?indikator_id=<%= @indikator_id %>&bidang_id=<%= @bidang_id %>',
+        destroyUrl: '/admkk/indib/child/data_destroy'
+    });
+</script>

@@ -36,7 +36,7 @@ $('#adm_varx_grid').datagrid({
         ddv.panel({
             border:false,
             cache:false,
-            href:'/adm/varxes/child?itemid='+row.id,
+            href:'/adm/varxes/child?itemid='+row.id+'&bidang_id='+row.bidang_id,
             onLoad:function(){
                 $('#adm_varx_grid').datagrid('fixDetailRowHeight',index);
             }
