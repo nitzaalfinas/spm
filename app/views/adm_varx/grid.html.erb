@@ -1,0 +1,48 @@
+<table id="adm_varx_grid" 
+    class="easyui-datagrid" 
+    data-options="method: 'GET', border: false, fit:true, pageSize: 20"
+    singleSelect="true"
+    sortName="bidang_id"
+    sortOrder="asc"
+    url="/adm/varxes/grid/data"
+    toolbar="#adm_varx_toolbar"
+    pagination="true">
+    <thead>
+        <tr>
+            <th field="action" formatter="admIndikator.actions" align="center">Action</th>
+            <th field="id" sortable="true" width="40">ID</th>
+            <th field="nama_bidang" sortable="true">Bidang</th>
+            <th field="jenis_pelayanan_nama" sortable="true">Jenis Pelayanan</th>
+            <th field="nama_indikator" sortable="true">Indikator</th>
+            <th field="nilai_default" sortable="true">Nilai Default (%)</th>
+            <th field="batas_waktu_default" sortable="true">Batas Waktu Default</th>
+        </tr>
+    </thead>
+</table>
+<div id="adm_indikator_toolbar" style="display: table; padding: 5px 10px; width: 100%;">
+    <a href="#" class="button small" onclick="admIndikator.createWindow(0);" >
+        Tambah
+    </a>
+</div>
+
+<script type="text/javascript">
+$('#adm_varx_grid').datagrid({
+    view: detailview,
+    detailFormatter:function(index,row){
+        return '<div class="ddv" style="padding:5px 0"></div>';
+    },
+    onExpandRow: function(index,row){
+        var ddv = $(this).datagrid('getRowDetail',index).find('div.ddv');
+        ddv.panel({
+            border:false,
+            cache:false,
+            href:'/adm/varxes/child?itemid='+row.id,
+            onLoad:function(){
+                $('#adm_varx_grid').datagrid('fixDetailRowHeight',index);
+            }
+        });
+        $('#adm_varx_grid').datagrid('fixDetailRowHeight',index);
+    }
+});
+</script>
+    

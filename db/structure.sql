@@ -28,7 +28,7 @@ CREATE TABLE `bidangs` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,10 +45,11 @@ CREATE TABLE `indikators` (
   `nama_indikator` varchar(255) DEFAULT NULL,
   `nilai_default` int(11) DEFAULT NULL,
   `batas_waktu_default` int(4) DEFAULT NULL,
+  `penanggungjawab` varchar(1000) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=252 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +66,7 @@ CREATE TABLE `jenis_pelayanans` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,6 +87,53 @@ CREATE TABLE `kabkots` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `ni_kbs`
+--
+
+DROP TABLE IF EXISTS `ni_kbs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ni_kbs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provinsi_id` int(11) DEFAULT NULL,
+  `kabkot_id` int(11) DEFAULT NULL,
+  `tahun` int(11) DEFAULT NULL,
+  `k1_1` int(11) DEFAULT NULL COMMENT 'Jumlah PUS yg istrinya berusia, 20 th',
+  `k1_2` int(11) DEFAULT NULL COMMENT 'Jumlah PUS yg istrinya berusia, 15 - 49 th',
+  `k1_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k2_1` int(11) DEFAULT NULL COMMENT 'Jumlah peserta KB aktif',
+  `k2_2` int(11) DEFAULT NULL COMMENT 'Jumlah PUS',
+  `k2_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k3_1` int(11) DEFAULT NULL COMMENT 'Jumlah PUS tak ber KB',
+  `k3_2` int(11) DEFAULT NULL COMMENT 'Jumlah PUS 15 - 49 tahun',
+  `k3_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k4_1` int(11) DEFAULT NULL COMMENT 'Jumlah Anggota BKB  ber KB',
+  `k4_2` int(11) DEFAULT NULL COMMENT 'Jumlah PUS anggota BKB',
+  `k4_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k5_1` int(11) DEFAULT NULL COMMENT 'Jumlah anggota UPPKS ber KB',
+  `k5_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh anggota UPPKS yang PUS',
+  `k5_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k6_1` int(11) DEFAULT NULL COMMENT 'Jumlah desa/kelurahan',
+  `k6_2` int(11) DEFAULT NULL COMMENT 'PLKB/PKB',
+  `k6_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k7_1` int(11) DEFAULT NULL COMMENT 'Jumlah Desa /Kelurahan',
+  `k7_2` int(11) DEFAULT NULL COMMENT 'Jumlah PPKBD Keterangan',
+  `k7_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k8_1` int(11) DEFAULT NULL COMMENT 'Kebutuhan alat dan obat',
+  `k8_2` int(11) DEFAULT NULL COMMENT 'Penyediaan oleh Pemerintah Pusat (BKKBN)',
+  `k8_3` int(11) DEFAULT NULL COMMENT 'Pelayanan Swasta',
+  `k8_4` int(11) DEFAULT NULL COMMENT 'Indeks Hasil Perhitungan (Beban Pemda)',
+  `k8_5` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k9_1` int(11) DEFAULT NULL COMMENT 'Rekap data mikro keluarga desa/kelurahan',
+  `k9_2` int(11) DEFAULT NULL COMMENT 'Jumlah desa/kelurahan',
+  `k9_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `ni_kesehatans`
 --
 
@@ -97,10 +145,233 @@ CREATE TABLE `ni_kesehatans` (
   `provinsi_id` int(11) DEFAULT NULL,
   `kabkot_id` int(11) DEFAULT NULL,
   `tahun` int(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `kk_pria` int(11) DEFAULT NULL COMMENT 'Penduduk Pria',
+  `kk_wanita` int(11) DEFAULT NULL COMMENT 'Penduduk Wanita',
+  `k1_1` int(11) DEFAULT NULL COMMENT 'Jml Ibu Hamil yang memperoleh pelayanan antenatal k4 (orang)',
+  `k1_2` int(11) DEFAULT NULL COMMENT 'Jml sasaran ibu hamil di satu wilayah kerja dalam kurun waktu yang sama (orang)',
+  `k1_2k` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k1_3` int(11) DEFAULT NULL COMMENT 'CBR',
+  `k1_4` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k2_1` int(11) DEFAULT NULL COMMENT 'Jml Ibu dg komplikasi kebidangan yang mendapat penanganan definitif disatu wilayah kerja pada kurun waktu tertentu (orang)',
+  `k2_2` int(11) DEFAULT NULL COMMENT 'Jml ibu dg komplikasi kebidangan di satu wilayah kerja pd kurun waktu yang sama (orang)',
+  `k2_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k3_1` int(11) DEFAULT NULL COMMENT 'Jumlah ibu bersalin yang ditolong oleh tenaga kesehatan di satu wilayah kerja pada kurun waktu tertentu (orang)',
+  `k3_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh sasaran ibu bersalin di satu wilayah kerja dalam kurun waktu yang sama (orang)',
+  `k3_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k4_1` int(11) DEFAULT NULL COMMENT 'Jumlah ibu nifas yang telah memperoleh 3 kali pelayanan nifas sesuai standar di satu wilayah kerja pada kurun waktu tertentu',
+  `k4_2` int(11) DEFAULT NULL COMMENT 'Seluruh ibu nifas di satu wilayah kerja dalam kurun waktu yang sama (orang)',
+  `k4_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k5_1` int(11) DEFAULT NULL COMMENT 'Jumlah neonatus dengan komplikasi yang tertangani (kasus/jiwa)',
+  `k5_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh neonatus dengan komplikasi yang ada (kasus/jiwa)',
+  `k5_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k5_4` int(11) DEFAULT NULL COMMENT 'Bayi baru lahir (jiwa)',
+  `k5_5` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k6_1` int(11) DEFAULT NULL COMMENT 'Jumlah bayi memperoleh pelayanan kesehatan sesuai standar disatu wilayah kerja pada kurun waktu tertentu (jiwa)',
+  `k6_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh bayi lahir hidup disatu wilayah kerja dalam waktu yang sama (jiwa)',
+  `k6_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k7_1` int(11) DEFAULT NULL COMMENT 'Julah desa/kelurahan UCI (desa/kelurahan)',
+  `k7_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh desa/kelurahan (desa/kelurahan)',
+  `k7_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k8_1` int(11) DEFAULT NULL COMMENT 'Jumlah anak balita yang memperoleh pelayanan pemantauan pertumbuhan minimal 8 kali (anak)',
+  `k8_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh anak balita (anak)',
+  `k8_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k9_1` int(11) DEFAULT NULL COMMENT 'Jumlah anak usia 6 - 24 bulan keluarga miskin yang mendapat makanan pendamping - ASI',
+  `k9_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh anak usia 6 - 24 bulan keluarga miskin (anak)',
+  `k9_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k10_1` int(11) DEFAULT NULL COMMENT 'Jumlah balita gizi buruk mendapat perawatan di sarana pelayanan kesehatan',
+  `k10_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh balita gizi buruk yang ditemukan (anak)',
+  `k10_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k11_1` int(11) DEFAULT NULL COMMENT 'jumlah murud sd dan setingkat yang diperiksa kesehatannya oleh tenaga kesehatan atau tenaga terlatih (anak)',
+  `k11_2` int(11) DEFAULT NULL COMMENT 'jumlah murid SD dan setingkat (anak)',
+  `k11_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k12_1` int(11) DEFAULT NULL COMMENT 'Jumlah PUS yang menggunakan kontrasepsi (pasangan)',
+  `k12_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh PUS (pasangan)',
+  `k12_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k13_1` int(11) DEFAULT NULL COMMENT 'Jumlah kasus AFP non polio yang dilaporkan (kasus/orang)',
+  `k13_2` int(11) DEFAULT NULL COMMENT 'Jumlah penduduk < 15 tahun (orang)',
+  `k13_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k14_1` int(11) DEFAULT NULL COMMENT 'Jumlah penderita pneumonia balita yang ditangani (anak)',
+  `k14_2` int(11) DEFAULT NULL COMMENT 'Jumlah perkiraan penderita pneumonia balita (anak)',
+  `k14_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k15_1` int(11) DEFAULT NULL COMMENT 'Jumlah pasien baru TB BTA positif yang ditemukan dan diobati (orang)',
+  `k15_2` int(11) DEFAULT NULL COMMENT 'Jumlah perkiraan pasien baru TB BTA positif (orang)',
+  `k15_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k16_1` int(11) DEFAULT NULL COMMENT 'Jumlah penderita DBD yang ditangani sesuai SOP (orang)',
+  `k16_2` int(11) DEFAULT NULL COMMENT 'Jumlah penderita DBD yang ditemukan (orang)',
+  `k16_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k17_1` int(11) DEFAULT NULL COMMENT 'Jumlah penderita diare yang datang dan dilayani di sarana kesehatan dan kader (orang)',
+  `k17_2` int(11) DEFAULT NULL COMMENT 'Jumlah perkiraan penderita diare (orang)',
+  `k17_3` varchar(1000) DEFAULT NULL,
+  `k18_1` int(11) DEFAULT NULL COMMENT 'Jumlah kunjungan pasien masyarakat miskin di sarkes strata 1 (orang)',
+  `k18_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh masyarakat miskin di kabupaten/kota (orang)',
+  `k18_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k19_1` int(11) DEFAULT NULL COMMENT 'Jumlah pasien masyarakat miskin di sarkes strata 2 dan strata 3 (orang)',
+  `k19_2` int(11) DEFAULT NULL COMMENT 'Jumlah seluruh masyarakat miskin di kabupaten/kota (orang)',
+  `k19_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k20_1` int(11) DEFAULT NULL COMMENT 'Pelayanan gawat darurat level 1 (buah)',
+  `k20_2` int(11) DEFAULT NULL COMMENT 'Jumlah rumah sakit kabupaten/kota (buah)',
+  `k20_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k21_1` int(11) DEFAULT NULL COMMENT 'Jumlah KLB di desa/kelurahan yang ditangani < 24 jam (kasus)',
+  `k21_2` int(11) DEFAULT NULL COMMENT 'Jumlah KLB di desa/kelurahan yang terjadi (kasus)',
+  `k21_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k22_1` int(11) DEFAULT NULL COMMENT 'Jumlah desa siaga yang aktif (desa)',
+  `k22_2` int(11) DEFAULT NULL COMMENT 'Jumlah desa siaga yang dibentuk (desa)',
+  `k22_3` varchar(1000) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ni_lhs`
+--
+
+DROP TABLE IF EXISTS `ni_lhs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ni_lhs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provinsi_id` int(11) DEFAULT NULL,
+  `kabkot_id` int(11) DEFAULT NULL,
+  `tahun` int(11) DEFAULT NULL,
+  `k1_1` int(11) DEFAULT NULL COMMENT 'Jml usaha dan/atau kegiatan yang telah mentaati persyaratan administratif dan teknis pencegahan pencemaraan air',
+  `k1_2` int(11) DEFAULT NULL COMMENT 'Jml usaha dan/atau kegiatan yang diawasi',
+  `k1_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k2_1` int(11) DEFAULT NULL COMMENT 'Jml usaha dan/atau kegiatan sumber tidak bergerak yg telah memenuhi persyaratan administratif dan teknis pengendalian pencemaran udara',
+  `k2_2` int(11) DEFAULT NULL COMMENT 'Jml usaha dan/atau kegiatan sumber tidak bergerak yg potensial mencemari udara yg telah diinventarisasi',
+  `k2_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k3_1` int(11) DEFAULT NULL COMMENT 'Luasan lahan yang telah ditetapkan dan diinformasikan status kerusakan lahan dan/atau tanah biomassa pada tahun berjalan',
+  `k3_2` int(11) DEFAULT NULL COMMENT 'Luasan lahan yang diperuntukkan sebagai lahan dan/atau tanah untuk produksi biomassa',
+  `k3_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k4_1` int(11) DEFAULT NULL COMMENT 'Jumlah pengaduan masyarakat akibat adanya dugaan pencemaran dan/atau perusakan lingkungan hidup yang ditindaklanjuti',
+  `k4_2` int(11) DEFAULT NULL COMMENT 'Jumlah pengaduan yang diterima instansi lingkungan hidup kabupaten/kota dalam 1 tahun',
+  `k4_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ni_pdns`
+--
+
+DROP TABLE IF EXISTS `ni_pdns`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ni_pdns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provinsi_id` int(11) DEFAULT NULL,
+  `kabkot_id` int(11) DEFAULT NULL,
+  `tahun` int(11) DEFAULT NULL,
+  `k1_1` int(11) DEFAULT NULL COMMENT 'Jml KK yg diterbitkan',
+  `k1_2` int(11) DEFAULT NULL COMMENT 'Jml kepala keluarga',
+  `k1_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k2_1` int(11) DEFAULT NULL COMMENT 'Jml KTP elektronik yang diterbitkan',
+  `k2_2` int(11) DEFAULT NULL COMMENT 'Jml penduduk wajib KTP elektronik',
+  `k2_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k3_1` int(11) DEFAULT NULL COMMENT 'Jml kutipan akta kelahiran yg diterbitkan',
+  `k3_2` int(11) DEFAULT NULL COMMENT 'Jml kelahiran yg terjadi',
+  `k3_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k4_1` int(11) DEFAULT NULL COMMENT 'Jml kutipan akta kematian yg diterbitkan',
+  `k4_2` int(11) DEFAULT NULL COMMENT 'Jml kematian yg terjadi',
+  `k4_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k5_1` int(11) DEFAULT NULL COMMENT 'Jml pelanggaran perda dan/atau peraturan kepala daerah yg diselesaikan',
+  `k5_2` int(11) DEFAULT NULL COMMENT 'Jml pelanggaran perda dan/atau peraturan kepala daerah yg dilaporkan dan/atau dipantau',
+  `k5_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k6_1` int(11) DEFAULT NULL COMMENT 'Banyaknya kelompok patroli dikalikan 3 kali patroli dalam sehari',
+  `k6_2` int(11) DEFAULT NULL COMMENT 'Banyaknya kelompok kecamatan (jumlah kecamatan)',
+  `k6_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k7_1` int(11) DEFAULT NULL COMMENT 'Jumlah satuan Linmas',
+  `k7_2` int(11) DEFAULT NULL COMMENT 'Jumlah RT',
+  `k7_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k8_1` int(11) DEFAULT NULL COMMENT 'Jumlah luas WMK (Wilayah Manajemen Kebakaran)',
+  `k8_2` int(11) DEFAULT NULL COMMENT 'Jumlah luas potensi kebakaran',
+  `k8_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k9_1` int(11) DEFAULT NULL COMMENT 'Jumlah kasus WMK yg tertangani dalam tingkat waktu tanggap',
+  `k9_2` int(11) DEFAULT NULL COMMENT 'Jumlah kasus kebakaran dalam jangkauan WMK',
+  `k9_3` int(11) DEFAULT NULL COMMENT 'Jumlah total terjadi kebakaran',
+  `k9_4` int(11) DEFAULT NULL COMMENT 'Jumlah kebakaran dalam WMK',
+  `k9_5` int(11) DEFAULT NULL COMMENT 'Jumlah kebakaran diluar jangkauan WMK',
+  `k9_6` int(11) DEFAULT NULL COMMENT 'Jumlah kebakaran dalam waktu tanggap',
+  `k9_7` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k10_1` int(11) DEFAULT NULL COMMENT 'Jml satgas Damkar memiliki sertifikasi sesuai standar kualifikasi',
+  `k10_2` int(11) DEFAULT NULL COMMENT 'Jml satgas Damkar',
+  `k10_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k11_1` int(11) DEFAULT NULL COMMENT 'Jml WMK memiliki mobil dan/atau mesin Damkar yg laik pakai',
+  `k11_2` int(11) DEFAULT NULL COMMENT 'Jml WMK atau lingkungan dan/atau kawasan berpotensi kebakaran',
+  `k11_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ni_peras`
+--
+
+DROP TABLE IF EXISTS `ni_peras`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ni_peras` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provinsi_id` int(2) DEFAULT NULL,
+  `kabkot_id` int(4) DEFAULT NULL,
+  `tahun` int(4) DEFAULT NULL,
+  `k1_1` int(11) DEFAULT NULL COMMENT 'Jumlah rumah layak huni',
+  `k1_2` int(11) DEFAULT NULL COMMENT 'Jumlah rumah',
+  `k1_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k2_1` int(11) DEFAULT NULL COMMENT 'Jumlah RT MBR yg menempati rumah layak huni yg terjangkau',
+  `k2_2` int(11) DEFAULT NULL COMMENT 'Jumlah RT MBR',
+  `k2_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k3_1` int(11) DEFAULT NULL COMMENT 'Jumlah lingkungan yg didukung PSU',
+  `k3_2` int(11) DEFAULT NULL COMMENT 'Jumlah lingkungan perumahan',
+  `k3_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `ni_sos`
+--
+
+DROP TABLE IF EXISTS `ni_sos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ni_sos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `provinsi_id` int(11) DEFAULT NULL,
+  `kabkot_id` int(11) DEFAULT NULL,
+  `tahun` int(11) DEFAULT NULL,
+  `k1_1` int(11) DEFAULT NULL COMMENT 'Jml PMKS dalam 1 tahun yg seharusnya memperoleh bantuan sosial (orang)',
+  `k1_2` int(11) DEFAULT NULL COMMENT 'Jml PMKS yg memperoleh bantuan sosial dalam 1 tahun (orang)',
+  `k1_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k2_1` int(11) DEFAULT NULL COMMENT 'Jml PMKS dalam 1 tahun yg seharusnya menjadi peserta program pemberdayaan masyarakat melalui KUBE atau kelompok sosial ekonomi sejenis (orang)',
+  `k2_2` int(11) DEFAULT NULL COMMENT 'Jml PMKS dalam 1 tahun yg menjadi peserta program pemberdayaan masyarakat melalui KUBE atau kelompok sosial ekonomi sejenis (orang)',
+  `k2_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k3_1` int(11) DEFAULT NULL COMMENT 'Jml panti sosial skala kab/kota dlm 1 tahun yg seharusnya menyediakan sarana prasarana pelayanan kesejahteraan sosial (unit)',
+  `k3_2` int(11) DEFAULT NULL COMMENT 'Jml panti sosial skala kab/kota dlm 1 tahun yg menyediakan sarana prasarana pelayanan kesejahteraan sosial (unit)',
+  `k3_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k4_1` int(11) DEFAULT NULL COMMENT 'Jml WKSBM dlm 1 thn yang seharusnya menyediakan sarana prasarana pelayanan kesejahteraan sosial (unit)',
+  `k4_2` int(11) DEFAULT NULL COMMENT 'Jml WKSBM dlm 1 thn yang menyediakan sarana prasarana pelayanan kesejahteraan sosial (unit)',
+  `k4_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k5_1` int(11) DEFAULT NULL COMMENT 'Jml korban bencana dalam 1 tahun yang seharusnya menerima bantuan sosial selama masa tanggap darurat (KK)',
+  `k5_2` int(11) DEFAULT NULL COMMENT 'Jml korban bencana dalam 1 tahun yang menerima bantuan sosial selama masa tanggap darurat (KK)',
+  `k5_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k6_1` int(11) DEFAULT NULL COMMENT 'Jml korban bencana yg seharusnya dievakuasi dengan menggunakan sarana prasarana tanggap darurat lengkap dalam 1 tahun (orang)',
+  `k6_2` int(11) DEFAULT NULL COMMENT 'Jml korban bencana yg dievakuasi dengan menggunakan sarana prasarana tanggap darurat lengkap dalam 1 tahun (orang)',
+  `k6_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `k7_1` int(11) DEFAULT NULL COMMENT 'Jml penyandang cacat fisik dan mental serta lanjut usia tidak potensial yg seharusnya menerima jaminan sosial dalam 1 tahun (orang)',
+  `k7_2` int(11) DEFAULT NULL COMMENT 'Jml penyandang cacat fisik dan mental serta lanjut usia tidak potensial yg menerima jaminan sosial dalam 1 tahun (orang)',
+  `k7_3` varchar(1000) DEFAULT NULL COMMENT 'Keterangan',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +391,7 @@ CREATE TABLE `nilai_indikators` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=126 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,6 +582,24 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Table structure for table `varxes`
+--
+
+DROP TABLE IF EXISTS `varxes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `varxes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `indikator_id` int(11) DEFAULT NULL,
+  `var_nama` varchar(255) DEFAULT NULL,
+  `keterangan` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Final view structure for view `v_indikators`
 --
 
@@ -414,7 +703,7 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-12 13:20:05
+-- Dump completed on 2015-01-14 15:31:51
 INSERT INTO schema_migrations (version) VALUES ('20141112140135');
 
 INSERT INTO schema_migrations (version) VALUES ('20141117163217');
@@ -452,4 +741,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150111090223');
 INSERT INTO schema_migrations (version) VALUES ('20150112015031');
 
 INSERT INTO schema_migrations (version) VALUES ('20150112061952');
+
+INSERT INTO schema_migrations (version) VALUES ('20150114083128');
 

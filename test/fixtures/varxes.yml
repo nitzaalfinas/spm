@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  indikator_id: 1
+  var_nama: MyString
+  keterangan: MyString
+
+two:
+  indikator_id: 1
+  var_nama: MyString
+  keterangan: MyString

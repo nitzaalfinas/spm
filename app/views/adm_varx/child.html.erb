@@ -1,0 +1,48 @@
+<div style="height: 300px; width: 100%;">
+    <table id="adm_varx<%= @indikator_id %>_grid" 
+        class="easyui-datagrid" 
+        data-options="method: 'GET', border: false, fit:true, pageSize: 10"
+        singleSelect="true"
+        nowrap="false"
+        toolbar="#adm_varx<%= @indikator_id %>_toolbar">
+        <thead>
+            <tr>
+                <th field="id" sortable="true" width="40">ID</th>
+                <th field="var_nama" sortable="true" editor="{type:'textbox'}" width="300">Nama Variabel</th>
+                <th field="satuan" sortable="true" editor="{type:'textbox'}" width="100">Nama Variabel</th>
+                <th field="keterangan" sortable="true" editor="{type:'textbox'}" width="300">Keterangan</th>
+            </tr>
+        </thead>
+    </table>
+    <div id="adm_varx<%= @indikator_id %>_toolbar" style="display: table; padding: 5px 10px; width: 100%;">
+        <a href="#" 
+            onclick="javascript:$('#adm_varx<%= @indikator_id %>_grid').edatagrid('addRow');" 
+            style="margin:5px;">
+            Tambah
+        </a>
+        <a href="#" 
+            onclick="javascript:$('#adm_varx<%= @indikator_id %>_grid').edatagrid('saveRow');" 
+            style="margin:5px;">
+            Simpan
+        </a>
+        <a href="#" 
+            onclick="javascript:$('#adm_varx<%= @indikator_id %>_grid').edatagrid('destroyRow');" 
+            style="margin:5px;">
+            Hapus
+        </a>
+        <a href="#" 
+            onclick="javascript:$('#adm_varx<%= @indikator_id %>_grid').datagrid('reload');" 
+            style="margin:5px;">
+            Reload
+        </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#adm_varx<%= @indikator_id %>_grid').edatagrid({
+        url: '/adm/varxes/child/data?indikator_id=<%= @indikator_id %>',
+        saveUrl: '/adm/varxes/child/data_insert?indikator_id=<%= @indikator_id %>',
+        updateUrl: '/adm/varxes/child/data_update?indikator_id=<%= @indikator_id %>',
+        destroyUrl: '/adm/varxes/child/data_destroy'
+    });
+</script>

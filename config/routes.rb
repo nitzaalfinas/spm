@@ -49,6 +49,15 @@ Rails.application.routes.draw do
   post 'adm/indikators/hapus/:id', to: 'adm_indikator#hapus'
   get 'adm/indikators/opt_jenis_pelayanan', to: 'adm_indikator#opt_jenis_pelayanan'
 
+  get 'adm/varxes', to: 'adm_varx#grid'
+  get 'adm/varxes/grid/data', to: 'adm_varx#grid_data'
+  get 'adm/varxes/child', to: 'adm_varx#child'
+  get 'adm/varxes/child/data', to: 'adm_varx#child_data'
+  post 'adm/varxes/child/data_insert', to: 'adm_varx#child_data_insert'
+  post 'adm/varxes/child/data_update', to: 'adm_varx#child_data_update'
+  post 'adm/varxes/child/data_destroy', to: 'adm_varx#child_data_destroy'
+  
+
 
   #URL UNTUK ADMIN KABUPATEN/KOTA
   get 'admkk/panel', to: 'admkk_panel#index'  
