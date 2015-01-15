@@ -5,11 +5,15 @@
         singleSelect="true"
         nowrap="false"
         toolbar="#admkk_varx<%= @indikator_id %>_toolbar">
+        <thead frozen="true">
+            <tr>
+                <th field="id" sortable="true" width="40" hidden="true">ID</th>
+                <th field="varx_id" sortable="true" width="50" hidden="true">ID Variabel</th>
+                <th field="var_nama" sortable="true" width="300">Variabel</th>
+            </tr>
+        </thead>
         <thead>
             <tr>
-                <th field="id" sortable="true" width="40">ID</th>
-                <th field="varx_id" sortable="true" editor="{type:'textbox'}" width="300">ID Variabel</th>
-                <th field="nilai" sortable="true" editor="{type:'textbox'}" width="100">Nilai</th>
                 <th field="t02" sortable="true" editor="{type:'textbox'}" width="100">2002</th>
                 <th field="t03" sortable="true" editor="{type:'textbox'}" width="100">2003</th>
                 <th field="t04" sortable="true" editor="{type:'textbox'}" width="100">2004</th>
@@ -19,6 +23,21 @@
                 <th field="t08" sortable="true" editor="{type:'textbox'}" width="100">2008</th>
                 <th field="t09" sortable="true" editor="{type:'textbox'}" width="100">2009</th>
                 <th field="t10" sortable="true" editor="{type:'textbox'}" width="100">2010</th>
+                <th field="t11" sortable="true" editor="{type:'textbox'}" width="100">2011</th>
+                <th field="t12" sortable="true" editor="{type:'textbox'}" width="100">2012</th>
+                <th field="t13" sortable="true" editor="{type:'textbox'}" width="100">2013</th>
+                <th field="t14" sortable="true" editor="{type:'textbox'}" width="100">2014</th>
+                <th field="t15" sortable="true" editor="{type:'textbox'}" width="100">2015</th>
+                <th field="t16" sortable="true" editor="{type:'textbox'}" width="100">2016</th>
+                <th field="t17" sortable="true" editor="{type:'textbox'}" width="100">2017</th>
+                <th field="t18" sortable="true" editor="{type:'textbox'}" width="100">2018</th>
+                <th field="t19" sortable="true" editor="{type:'textbox'}" width="100">2019</th>
+                <th field="t20" sortable="true" editor="{type:'textbox'}" width="100">2020</th>
+                <th field="t21" sortable="true" editor="{type:'textbox'}" width="100">2021</th>
+                <th field="t22" sortable="true" editor="{type:'textbox'}" width="100">2022</th>
+                <th field="t23" sortable="true" editor="{type:'textbox'}" width="100">2023</th>
+                <th field="t24" sortable="true" editor="{type:'textbox'}" width="100">2024</th>
+                <th field="t25" sortable="true" editor="{type:'textbox'}" width="100">2025</th>
             </tr>
         </thead>
     </table>
@@ -39,7 +58,6 @@
 <script type="text/javascript">
     $('#admkk_varx<%= @indikator_id %>_grid').edatagrid({
         url: '/admkk/indib/child/data?indikator_id=<%= @indikator_id %>',
-        saveUrl: '/admkk/indib/child/data_insert?indikator_id=<%= @indikator_id %>&bidang_id=<%= @bidang_id %>',
         updateUrl: '/admkk/indib/child/data_update?indikator_id=<%= @indikator_id %>&bidang_id=<%= @bidang_id %>',
         destroyUrl: '/admkk/indib/child/data_destroy'
     });

@@ -2,20 +2,22 @@
     class="easyui-datagrid" 
     data-options="method: 'GET', border: false, fit:true, pageSize: 20"
     singleSelect="true"
-    sortName="bidang_id"
+    sortName="id"
     sortOrder="asc"
+    nowrap="false"
     url="/adm/varxes/grid/data"
     toolbar="#adm_varx_toolbar"
     pagination="true">
     <thead>
         <tr>
-            <th field="action" formatter="admIndikator.actions" align="center">Action</th>
-            <th field="id" sortable="true" width="40">ID</th>
-            <th field="nama_bidang" sortable="true">Bidang</th>
-            <th field="jenis_pelayanan_nama" sortable="true">Jenis Pelayanan</th>
-            <th field="nama_indikator" sortable="true">Indikator</th>
+            <th field="action" formatter="admVarx.actions" align="center"></th>
+            <th field="id" sortable="true" width="40" align="center">ID</th>
+            <th field="nama_bidang" sortable="true" width="150">Bidang</th>
+            <th field="jenis_pelayanan_nama" sortable="true" width="150">Jenis Pelayanan</th>
+            <th field="nama_indikator" sortable="true" width="350">Indikator</th>
             <th field="nilai_default" sortable="true">Nilai Default (%)</th>
             <th field="batas_waktu_default" sortable="true">Batas Waktu Default</th>
+            <th field="rumus" sortable="true">Rumus</th>
         </tr>
     </thead>
 </table>

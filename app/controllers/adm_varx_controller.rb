@@ -40,7 +40,8 @@ class AdmVarxController < ApplicationController
 				:jenis_pelayanan_nama => u.jenis_pelayanan_nama, 
 				:nama_indikator => u.nama_indikator,
 				:nilai_default => u.nilai_default,
-				:batas_waktu_default => u.batas_waktu_default
+				:batas_waktu_default => u.batas_waktu_default,
+				:rumus => u.rumus
 			}
 		end
 
@@ -99,5 +100,20 @@ class AdmVarxController < ApplicationController
 		Varx.where(id: id).destroy_all
 		render inline: "success"
 	end #child_data_destroy
+
+
+	def form_rumus_indikator
+		id = params[:id]
+		@indikator = Indikator.find(id)
+		render :layout => false
+	end #form_rumus_indikator
+
+	def form_rumus_indikator_update
+		id = params[:id]
+		@indikator = Indikator.find(id)
+		@indikator.rumus = params[:rumus]
+		@indikator.save
+		render inline: "success"
+	end #form_rumus_indikator_update	
 
 end

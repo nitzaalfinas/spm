@@ -1,4 +1,4 @@
-<table id="admkk_indib<%= @indikator_id%>_grid" 
+<table id="admkk_indib<%= @bidang_id%>_grid" 
     class="easyui-datagrid" 
     data-options="method: 'GET', border: false, fit:true, pageSize: 20"
     singleSelect="true"
@@ -18,7 +18,7 @@
 </table>
 
 <script type="text/javascript">
-$('#admkk_indib<%= @indikator_id%>_grid').datagrid({
+$('#admkk_indib<%= @bidang_id%>_grid').datagrid({
     view: detailview,
     detailFormatter:function(index,row){
         return '<div class="ddv" style="padding:5px 0"></div>';
@@ -30,10 +30,10 @@ $('#admkk_indib<%= @indikator_id%>_grid').datagrid({
             cache:false,
             href:'/admkk/indib/child?id='+row.id+'&bidang_id='+row.bidang_id+'&indikator_id='+row.indikator_id,
             onLoad:function(){
-                $('#admkk_indib<%= @indikator_id%>_grid').datagrid('fixDetailRowHeight',index);
+                $('#admkk_indib<%= @bidang_id%>_grid').datagrid('fixDetailRowHeight',index);
             }
         });
-        $('#admkk_indib<%= @indikator_id%>_grid').datagrid('fixDetailRowHeight',index);
+        $('#admkk_indib<%= @bidang_id%>_grid').datagrid('fixDetailRowHeight',index);
     }
 });
 </script>

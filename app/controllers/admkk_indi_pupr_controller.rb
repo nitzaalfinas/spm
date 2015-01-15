@@ -1,2 +1,0 @@
-class AdmkkIndiPuprController < ApplicationController
-end

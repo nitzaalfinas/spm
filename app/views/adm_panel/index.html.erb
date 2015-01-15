@@ -420,4 +420,36 @@ var admIndikator = {
     }
 };
 
+var admVarx = {
+    actions: function(value,row,index) {
+        var e = '<a href="#" title="Edit" onclick="admVarx.createWindow('+row.id+');"><i class="fa fa-pencil-square-o"></i></a>';
+        
+        return e;
+    },
+    createWindow: function(id) {
+        $('#theForm').window({
+            width:360,
+            height:150,
+            modal:true,
+            title: 'Formulir Rumus Indikator'
+        });
+        $('#theForm').window('refresh','/adm/varxes/form_rumus_indikator/'+id);
+    },
+    formSave: function(id) {
+        var data = $('#theForm form').serialize();
+
+        var theUrl = '/adm/varxes/form_rumus_indikator/update';
+
+        $.ajax({
+            url: theUrl,
+            data: data,
+            type: 'POST',
+            success: function(response) {
+                $('#theForm').window('close');
+                $('#adm_varx_grid').datagrid('reload');
+            }
+        });
+    }
+};
+
 </script>
