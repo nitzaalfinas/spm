@@ -1,1 +1,8 @@
-pada view nilai indikator, 
+User ada beberapa kategori
+- Administrator pusat
+- Stakeholder pusat
+- Administrator provinsi
+- Stakholder provinsi
+- Administrator kabupaten/kota
+- Stakeholder kabupaten/kota
+
