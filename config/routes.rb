@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   get 'admkk/indib/child/data', to: 'admkk_indib#child_data'
   post 'admkk/indib/child/data_update', to: 'admkk_indib#child_data_update'
 
-
+  get 'admkk/hitung', to: 'admkk_hitung#index'
 
 
 end
