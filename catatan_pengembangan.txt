@@ -5,4 +5,3 @@ User ada beberapa kategori
 - Stakholder provinsi
 - Administrator kabupaten/kota
 - Stakeholder kabupaten/kota
-
