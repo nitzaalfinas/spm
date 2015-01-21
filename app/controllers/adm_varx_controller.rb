@@ -102,16 +102,21 @@ class AdmVarxController < ApplicationController
 	end #child_data_destroy
 
 
-	def form_rumus_indikator
+	def form_indikator
 		id = params[:id]
 		@indikator = Indikator.find(id)
 		render :layout => false
 	end #form_rumus_indikator
 
-	def form_rumus_indikator_update
+	def form_indikator_update
 		id = params[:id]
 		@indikator = Indikator.find(id)
+		@indikator.nama_indikator = params[:nama_indikator]
+		@indikator.nilai_default = params[:nilai_default]
+		@indikator.batas_waktu_default = params[:batas_waktu_default]
+		@indikator.penanggungjawab = params[:penanggungjawab]
 		@indikator.rumus = params[:rumus]
+		@indikator.keterangan = params[:keterangan]
 		@indikator.save
 		render inline: "success"
 	end #form_rumus_indikator_update	

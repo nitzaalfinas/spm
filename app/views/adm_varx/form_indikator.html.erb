@@ -1,0 +1,73 @@
+<form class="pt10 pr10 pb10 pl10">
+	<table>
+		<tr style="display:none">
+			<td>
+				ID
+			</td>
+			<td>
+				<input type="text" name="id" value="<%= @indikator.id %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Nama Indikator
+			</td>
+			<td>
+				<input type="text" name="nama_indikator" value="<%= @indikator.nama_indikator %>" />
+			</td>
+		</tr>		
+
+		<tr>
+			<td>
+				Nilai Default
+			</td>
+			<td>
+				<input type="text" name="nilai_default" value="<%= @indikator.nilai_default %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Batas Waktu Default
+			</td>
+			<td>
+				<input type="text" name="batas_waktu_default" value="<%= @indikator.batas_waktu_default %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Penanggungjawab
+			</td>
+			<td>
+				<input type="text" name="penanggungjawab" value="<%= @indikator.penanggungjawab %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Rumus
+			</td>
+			<td>
+				<input type="text" name="rumus" value="<%= @indikator.rumus %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				Keterangan
+			</td>
+			<td>
+				<input type="text" name="keterangan" value="<%= @indikator.keterangan %>" />
+			</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td align="right">
+				<input type="submit" class="button tiny" value="Simpan" onclick="admVarx.formSave(<%= @indikator.id %>);return false;">
+			</td>
+		</tr>
+	</table>
+</form>

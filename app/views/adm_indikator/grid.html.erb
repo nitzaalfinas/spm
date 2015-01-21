@@ -1,9 +1,11 @@
 <table id="adm_indikator_grid" 
     class="easyui-datagrid" 
-    data-options="method: 'GET', border: false, fit:true, pageSize: 20"
-    singleSelect="true"
-    sortName="bidang_id"
-    sortOrder="asc"
+    data-options="
+        method: 'GET', 
+        border: false, 
+        fit:true, 
+        pageSize: 20,
+        singleSelect: true"
     url="/adm/indikators/grid/data"
     rownumbers="true" 
     toolbar="#adm_indikator_toolbar"

@@ -429,11 +429,11 @@ var admVarx = {
     createWindow: function(id) {
         $('#theForm').window({
             width:360,
-            height:150,
+            height:300,
             modal:true,
-            title: 'Formulir Rumus Indikator'
+            title: 'Formulir Indikator'
         });
-        $('#theForm').window('refresh','/adm/varxes/form_rumus_indikator/'+id);
+        $('#theForm').window('refresh','/adm/varxes/form_indikator/'+id);
     },
     formSave: function(id) {
         var data = $('#theForm form').serialize();

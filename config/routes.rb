@@ -56,8 +56,8 @@ Rails.application.routes.draw do
   post 'adm/varxes/child/data_insert', to: 'adm_varx#child_data_insert'
   post 'adm/varxes/child/data_update', to: 'adm_varx#child_data_update'
   post 'adm/varxes/child/data_destroy', to: 'adm_varx#child_data_destroy'
-  get 'adm/varxes/form_rumus_indikator/:id', to: 'adm_varx#form_rumus_indikator'
-  post 'adm/varxes/form_rumus_indikator/update', to: 'adm_varx#form_rumus_indikator_update'
+  get 'adm/varxes/form_indikator/:id', to: 'adm_varx#form_indikator'
+  post 'adm/varxes/form_indikator/update', to: 'adm_varx#form_indikator_update'
   
 
 

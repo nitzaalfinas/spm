@@ -30,7 +30,8 @@ class AdmIndikatorController < ApplicationController
 		#semua data
 		total = VIndikator.all.size
 
-		@indikators = VIndikator.order(ordexx).limit(rows).offset(startx)
+		#@indikators = VIndikator.order(ordexx).limit(rows).offset(startx)
+		@indikators = VIndikator.order("id asc").limit(rows).offset(startx)
 		@indikator_list = @indikators.map do |u|
 			{ 
 				:id => u.id, 
